@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.springframework.dto.FileInfo;
+import com.mycompany.springframework.interceptor.Auth;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -180,5 +181,17 @@ public class Ch02Controller {
              fileInfo.setFileName("photo2.jpg");
              fileInfo.setInfo("아름다운 풍경 사진");
              return fileInfo;
+           }
+           
+           @GetMapping("/testAuthInterceptor1")
+           public String testAuthInterceptor1() {
+             log.info("testAuthInterceptor1() 실행"); 
+             return "ch02/testAuthInterceptor1";
+           }
+           @Auth
+           @GetMapping("/testAuthInterceptor2")
+           public String testAuthInterceptor2() {
+             log.info("testAuthInterceptor2() 실행"); 
+             return "ch02/testAuthInterceptor2";
            }
 }
