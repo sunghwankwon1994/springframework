@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.mycompany.springframework.dto.FileInfo;
+import com.mycompany.springframework.dto.Ch02FileInfo;
 import com.mycompany.springframework.interceptor.Auth;
 import lombok.extern.slf4j.Slf4j;
 
@@ -175,9 +175,9 @@ public class Ch02Controller {
            
            @GetMapping(value= "/objectReturnJson2",produces="application/json; charset=UTF-8")
            @ResponseBody // 리턴된 객체를 JSON으로 해석하고 응답 본문에 넣겠다.
-           public FileInfo objectReturnJson2() {
+           public Ch02FileInfo objectReturnJson2() {
              log.info("ObjectReturnJson2() 실행");
-             FileInfo fileInfo = new FileInfo();
+             Ch02FileInfo fileInfo = new Ch02FileInfo();
              fileInfo.setFileName("photo2.jpg");
              fileInfo.setInfo("아름다운 풍경 사진");
              return fileInfo;

@@ -2,12 +2,17 @@
 package com.mycompany.springframework.controller;
 
 import java.util.Date;
+import org.json.JSONObject;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.mycompany.springframework.dto.Ch03Dto;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -109,9 +114,9 @@ public class Ch03Controller {
   }
 
   @RequestMapping("/typeChange")
-  public String typeChange(@RequestParam(required = true) String param1,
-      int param2, double param3, boolean param4,@DateTimeFormat(pattern="yyyy-MM-dd") Date param5,
-      @RequestParam(defaultValue ="0") int param6, Model model) {
+  public String typeChange(@RequestParam(required = true) String param1, int param2, double param3,
+      boolean param4, @DateTimeFormat(pattern = "yyyy-MM-dd") Date param5,
+      @RequestParam(defaultValue = "0") int param6, Model model) {
     log.info("receiveParamData() 실행");
     log.info("param1: " + param1);
     log.info("param2: " + param2);
@@ -129,5 +134,39 @@ public class Ch03Controller {
     model.addAttribute("param6", param6);
 
     return "ch03/receiveParamData";
+  }
+
+  @RequestMapping("/getDto")
+  // @ModelAttribute("dto")가 생략되면 ch03Dto로 JSP에서 사용 (클래스의 첫글자를 소문자로하는 이름이 기본으로 설정됨)
+  public String getDto(@ModelAttribute("dto") Ch03Dto dto, Model model) {
+    log.info("getDto() 실행");
+    log.info("param1: " + dto.getParam1());
+    log.info("param2: " + dto.getParam2());
+    log.info("param3: " + dto.getParam3());
+    log.info("param4: " + dto.isParam4());
+    log.info("param5: " + dto.getParam5());
+
+    model.addAttribute("chNum", "ch03");
+    return "ch03/getDto";
+  }
+
+  @GetMapping("/ajax")
+  public String ajax(Model model) {
+    log.info("ajax() 실행");
+    model.addAttribute("chNum", "ch03");
+    return "ch03/ajax";
+  }
+
+  @PostMapping(value = "/getAjaxParams",
+      produces = "application/json; charset=UTF-8")
+  @ResponseBody
+  public String getAjaxParams(Ch03Dto dto) {
+    JSONObject jsonObject = new JSONObject();
+    jsonObject.put("param1", dto.getParam1());
+    jsonObject.put("param2", dto.getParam2());
+    jsonObject.put("param3", dto.getParam3());
+    jsonObject.put("param4", dto.isParam4());
+    jsonObject.put("param5", dto.getParam5());
+    return jsonObject.toString();
   }
 }
