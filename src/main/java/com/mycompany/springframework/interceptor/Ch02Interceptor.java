@@ -13,9 +13,9 @@ public class Ch02Interceptor implements HandlerInterceptor{
       throws Exception {
     // TODO Auto-generated method stub
     log.info("preHandle() 실행");
-    //return true; :Controller의 요청 매핑 메소드가실행
+    //return true; : 다음 인터셉터를 실행하거나 Controller의 요청 매핑 메소드가실행
     // return false; : Controller의 요청 매핑 메소드가 실행되지 않음
-    return false;
+    return true;
   }
   
   @Override

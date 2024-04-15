@@ -184,14 +184,16 @@ public class Ch02Controller {
            }
            
            @GetMapping("/testAuthInterceptor1")
-           public String testAuthInterceptor1() {
+           public String testAuthInterceptor1(String chNum,Model model) {
              log.info("testAuthInterceptor1() 실행"); 
+             model.addAttribute("chNum",chNum);
              return "ch02/testAuthInterceptor1";
            }
            @Auth
            @GetMapping("/testAuthInterceptor2")
-           public String testAuthInterceptor2() {
+           public String testAuthInterceptor2(String chNum,Model model) {
              log.info("testAuthInterceptor2() 실행"); 
+             model.addAttribute("chNum",chNum);
              return "ch02/testAuthInterceptor2";
            }
 }

@@ -36,7 +36,7 @@ public class Ch02AuthInterceptor implements HandlerInterceptor{
         //request.getContextPath() => /spring
         response.sendRedirect(request.getContextPath());
         //요청 매핑 메소드 실행을 하지 않음
-        return false;
+        return true;
       }
     }
   }
