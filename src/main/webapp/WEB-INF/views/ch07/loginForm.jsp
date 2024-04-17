@@ -36,9 +36,25 @@
 				<div class="col-md-8">
 					<!-- #################################### -->
 					<div class="card">
-						<div class="card-header">sessionData</div>
+						<div class="card-header">로그인 양식</div>
 						<div class="card-body">
+							<c:if test="${login=='success'}">
+								<a href="sessionLogout" class="btn btn-danger btn-sm">logout</a>
+							</c:if>
+							<c:if test="${login!='success'}">
+								<form class="m-2 " method="post" action="sessionLogin" novalidate>
+									<div class="form-group mb-2">
+										<label for="mid" class="form-label">멤버 아이디</label> <input type="text" class="form-control " id="mid" name="mid" value="${ch04LoginForm.mid}">
+									</div>
 
+									<div class="form-group mb-2">
+										<label for="mpassword" class="form-label">멤버 패스워드</label> <input type="password" class="form-control" id="mpassword" name="mpassword" value="${ch04LoginForm.mpassword}">
+									</div>
+									<!-- 제출 버튼: 양식의 데이터를 서버로 보내겠다. -->
+									<button type="submit" class="btn btn-info btn-sm">로그인</button>
+
+								</form>
+							</c:if>
 						</div>
 					</div>
 					<!-- #################################### -->

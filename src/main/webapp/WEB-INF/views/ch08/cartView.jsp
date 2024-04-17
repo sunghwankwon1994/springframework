@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,17 @@
 
 <!-- 사용자 정의 자바스크립트 -->
 <script>
-  
+  function updateCartItem(pno){
+    var amount=$("#amount"+pno).val();
+    $.ajax({
+      url:"updateCartItem",
+      type: "post",
+      data: {pno: pno,amount: amount},
+      success: function(data){
+        console.log(data);
+      }
+    })
+  }
 </script>
 </head>
 <body>
@@ -36,9 +46,31 @@
 				<div class="col-md-8">
 					<!-- #################################### -->
 					<div class="card">
-						<div class="card-header">applicationData</div>
+						<div class="card-header">장바구니 보기</div>
 						<div class="card-body">
-						
+							<table class="table table-striped border">
+								<thead class="table-warning">
+									<tr>
+										<th>번호</th>
+										<th>상품명</th>
+										<th>가격</th>
+										<th>수량</th>
+										<th>수정 및 삭제</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="cartItem" items="${cart}">
+										<tr>
+											<td>${cartItem.product.pno}</td>
+											<td>${cartItem.product.pname}</td>
+											<td>${cartItem.product.pprice}</td>
+											<td><input type="number" id="amount${cartItem.product.pno}" value="${cartItem.amount}" style="width: 50px" /></td>
+											<td><button onclick="updateCartItem(${cartItem.product.pno})" class="btn btn-info btn-sm">수정</button> 
+											<a href="removeCartItem?pno=${cartItem.product.pno}" class="btn btn-danger btn-sm">삭제</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 					</div>
 					<!-- #################################### -->

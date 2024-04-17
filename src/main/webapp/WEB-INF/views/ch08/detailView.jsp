@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,11 @@
 
 <!-- 사용자 정의 자바스크립트 -->
 <script>
-  
+  function addCartItem() {
+    var pno = ${product.pno};
+   	var amount = $("#amount").val();
+   	document.location.href ="addCartItem?pno="+pno+"&amount="+amount;
+  }
 </script>
 </head>
 <body>
@@ -36,10 +40,20 @@
 				<div class="col-md-8">
 					<!-- #################################### -->
 					<div class="card">
-						<div class="card-header">applicationData</div>
+						<div class="card-header">상품 상세</div>
 						<div class="card-body">
-							<p>방문자 수: ${counter}</p>
+							<p>상품 번호: ${product.pno}</p>
+							<p>상품 이름: ${product.pname}</p>
+							<p>상품 가격: ${product.pprice}</p>
+							
+							<hr/>
+							
+							<div>
+							수량: <input type="number" id="amount" value="1" />
+							</div>
+							<button onclick="addCartItem()" class="btn btn-info btn-sm mt-3">장바구니 넣기</button>
 						</div>
+						
 					</div>
 					<!-- #################################### -->
 				</div>
