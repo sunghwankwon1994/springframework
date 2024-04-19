@@ -18,8 +18,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
 <!-- 사용자 정의 자바스크립트 -->
-<script>
-  
+<script >
 </script>
 </head>
 <body>
@@ -36,16 +35,10 @@
 				<div class="col-md-8">
 					<!-- #################################### -->
 					<div class="card">
-						<div class="card-header">파일 다운로드</div>
+						<div class="card-header">500 예외 처리</div>
 						<div class="card-body">
-							<ul>
-								<c:forEach var="fileName" items="${fileNames}">
-									<li class="mb-2">
-										<a href="downloadFile?fileName=${fileName}">${fileName}</a>
-										<img src="downloadFile?fileName=${fileName}" width="50" height="50" />
-									</li>
-								</c:forEach>
-							</ul>
+							<p> 이유:${message} </p>
+							<p> 조치 내용...</p>
 						</div>
 					</div>
 					<!-- #################################### -->

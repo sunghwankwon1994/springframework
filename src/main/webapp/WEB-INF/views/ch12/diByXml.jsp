@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -36,16 +36,9 @@
 				<div class="col-md-8">
 					<!-- #################################### -->
 					<div class="card">
-						<div class="card-header">파일 다운로드</div>
+						<div class="card-header">XML 설정 관리빈 의존성 주입</div>
 						<div class="card-body">
-							<ul>
-								<c:forEach var="fileName" items="${fileNames}">
-									<li class="mb-2">
-										<a href="downloadFile?fileName=${fileName}">${fileName}</a>
-										<img src="downloadFile?fileName=${fileName}" width="50" height="50" />
-									</li>
-								</c:forEach>
-							</ul>
+							<p>spring/root/ch12_di_by_xml.xml 참조</p>
 						</div>
 					</div>
 					<!-- #################################### -->

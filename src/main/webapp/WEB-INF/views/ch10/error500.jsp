@@ -36,16 +36,10 @@
 				<div class="col-md-8">
 					<!-- #################################### -->
 					<div class="card">
-						<div class="card-header">파일 다운로드</div>
+						<div class="card-header">알수 없는 예외 발생</div>
 						<div class="card-body">
-							<ul>
-								<c:forEach var="fileName" items="${fileNames}">
-									<li class="mb-2">
-										<a href="downloadFile?fileName=${fileName}">${fileName}</a>
-										<img src="downloadFile?fileName=${fileName}" width="50" height="50" />
-									</li>
-								</c:forEach>
-							</ul>
+							<p>서버의 알 수 없는 예외가 발생되었습니다.</p>
+							<p>잠시후 다시 사용해 주시길 바랍니다.</p>
 						</div>
 					</div>
 					<!-- #################################### -->
