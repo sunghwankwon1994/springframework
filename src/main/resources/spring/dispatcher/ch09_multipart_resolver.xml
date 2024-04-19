@@ -21,7 +21,8 @@
 		<property name="maxUploadSizePerFile" value="20971520"/> 
 		<!-- request size와 동일 -->
 		<property name="maxUploadSize" value="104857600"/> 
-	
+		<!--  -->
+		<property name="maxInMemorySize" value="1024"/>  
 	</bean>
 
 
