@@ -17,10 +17,23 @@ public class Ch12Controller {
     return "ch12/createBeanByXml";
   }
   
+  @GetMapping("/createBeanByAnnotation")
+  public String createBeanByAnnotation(Model model) {
+    log.info("실행");
+    model.addAttribute("chNum","ch12");
+    return "ch12/createBeanByAnnotation";
+  }
+  
   @GetMapping("/diByXml")
   public String diByXml(Model model) {
     log.info("실행");
     model.addAttribute("chNum","ch12");
     return "ch12/diByXml";
+  }
+  @GetMapping("/diByAnnotation")
+  public String diByAnnotaion(Model model) {
+    log.info("실행");
+    model.addAttribute("chNum","ch12");
+    return "ch12/diByAnnotation";
   }
 }
