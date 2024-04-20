@@ -87,7 +87,7 @@ public class Ch07Controller {
   @PostMapping("/request2")
   public String postRequest2(Model model, @ModelAttribute("joinForm") Ch07JoinForm joinForm) {
     model.addAttribute("chNum", "ch07");
-
+    
     return "ch07/memberInfo";
   }
 
